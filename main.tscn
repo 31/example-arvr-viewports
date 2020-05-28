@@ -23,26 +23,26 @@ background_mode = 2
 background_sky = SubResource( 2 )
 ambient_light_color = Color( 0.741176, 0.741176, 0.741176, 1 )
 
-[sub_resource type="World" id=4]
+[sub_resource type="World" id=7]
 environment = ExtResource( 3 )
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=8]
 script/source = "extends Spatial
 
 func _process(delta):
 	rotate(Vector3(1, 2, 3).normalized(), delta)
 "
 
-[sub_resource type="OpenSimplexNoise" id=6]
+[sub_resource type="OpenSimplexNoise" id=4]
 period = 92.8
 
-[sub_resource type="NoiseTexture" id=7]
+[sub_resource type="NoiseTexture" id=5]
 seamless = true
-noise = SubResource( 6 )
+noise = SubResource( 4 )
 
-[sub_resource type="SpatialMaterial" id=8]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 1, 0.0705882, 0.0705882, 1 )
-albedo_texture = SubResource( 7 )
+albedo_texture = SubResource( 5 )
 metallic = 0.12
 roughness = 0.35
 
@@ -90,7 +90,7 @@ __meta__ = {
 arvr = true
 size = Vector2( 1024, 600 )
 own_world = true
-world = SubResource( 4 )
+world = SubResource( 7 )
 transparent_bg = true
 handle_input_locally = false
 keep_3d_linear = true
@@ -101,7 +101,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0116105, 0.990499, 1.78029 )
 current = true
 
 [node name="Rotating" type="Spatial" parent="ViewportContainer/OuterViewport"]
-script = SubResource( 5 )
+script = SubResource( 8 )
 
 [node name="CSGTorus" type="CSGTorus" parent="ViewportContainer/OuterViewport/Rotating"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506094, 0 )
@@ -125,22 +125,52 @@ invert_faces = true
 width = 28.421
 height = 28.767
 depth = 24.0484
-material = SubResource( 8 )
+material = SubResource( 6 )
 
 [node name="CSGBox2" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.972331, 1.63197, -4.76837e-07 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8596, 1.63197, -4.76837e-07 )
 width = 0.5
 height = 0.5
 depth = 0.5
 
 [node name="CSGBox3" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.558832, 1.06491, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87697, 1.06491, 0 )
 width = 0.5
 height = 0.5
 depth = 0.5
 
 [node name="CSGBox4" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0589252, 1.64129, -1.4212 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0589252, 1.64129, -2.88627 )
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox5" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0566099, 1.64129, 3.12429 )
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox9" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, -2.67962, 0.751413, 1.12611 )
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox8" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, 2.60432, 0.184353, -1.10733 )
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox7" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, -1.22364, 0.760733, -2.62282 )
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox6" type="CSGBox" parent="ViewportContainer/OuterViewport/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, 1.22288, 0.760733, 2.86851 )
 width = 0.5
 height = 0.5
 depth = 0.5
