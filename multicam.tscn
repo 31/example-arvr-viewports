@@ -1,0 +1,89 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://MoveCamera.gd" type="Script" id=1]
+[ext_resource path="res://new_proceduralsky.tres" type="ProceduralSky" id=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Spatial
+
+func _ready():
+	get_viewport().use_multiple_cameras = true
+"
+
+[sub_resource type="ProceduralSky" id=2]
+ground_energy = 0.24
+sun_energy = 16.59
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 2 )
+tonemap_mode = 2
+
+[sub_resource type="ProceduralSky" id=4]
+
+[sub_resource type="Environment" id=5]
+background_mode = 2
+background_sky = SubResource( 4 )
+
+[sub_resource type="Environment" id=6]
+background_keep = true
+background_mode = 2
+background_sky = ExtResource( 2 )
+
+[sub_resource type="CubeMesh" id=7]
+
+[node name="Spatial" type="Spatial"]
+script = SubResource( 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.593939, 0, 0.80451, 0, 1, 0, -0.80451, 0, 0.593939, 3.32977, 1.07499, 3.11921 )
+environment = SubResource( 5 )
+current = true
+depth = 1
+fov = 68.0
+
+[node name="Spatial" type="Spatial" parent="."]
+transform = Transform( 0.992728, 0, -0.120379, 0, 1, 0, 0.120379, 0, 0.992728, 0, 0, -2.34406 )
+script = ExtResource( 1 )
+rot_scale = 5.0
+
+[node name="Camera2" type="Camera" parent="Spatial"]
+transform = Transform( 0.212849, -0.526986, 0.822789, 0.131983, 0.849874, 0.510191, -0.96813, 4.61936e-07, 0.250448, 4.13182, 2.26779, 0.993848 )
+cull_mask = 2148532219
+environment = SubResource( 6 )
+depth = 3
+fov = 69.0
+
+[node name="Spatial2" type="Spatial" parent="."]
+transform = Transform( 0.992728, 0, -0.120379, 0, 1, 0, 0.120379, 0, 0.992728, 0, 0, 2.783 )
+script = ExtResource( 1 )
+rot_scale = -3.0
+
+[node name="Camera2" type="Camera" parent="Spatial2"]
+transform = Transform( 0.212849, -0.526986, 0.822788, 0.131983, 0.849874, 0.510191, -0.96813, 3.35276e-07, 0.250448, 4.94328, 3.52643, 0.89545 )
+cull_mask = 1048573
+environment = SubResource( 6 )
+depth = 9
+fov = 69.0
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance2" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.27545, 0, 0, 0, 1, 0, 0, 1.8674 )
+layers = 2
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="MeshInstance3" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.729499, 0, 0, 0, 0.318614, 0, 0.748953, -1.12835 )
+layers = 4
+mesh = SubResource( 7 )
+material/0 = null
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23417, 1.66349, 1.82384 )
