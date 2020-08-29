@@ -1,0 +1,196 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://main.shader" type="Shader" id=1]
+
+[sub_resource type="GDScript" id=4]
+script/source = "extends Spatial
+
+func _process(delta):
+	rotate(Vector3(1, 2, 3).normalized(), delta)
+"
+
+[sub_resource type="OpenSimplexNoise" id=5]
+period = 92.8
+
+[sub_resource type="NoiseTexture" id=6]
+seamless = true
+noise = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=7]
+albedo_color = Color( 1, 0.0705882, 0.0705882, 1 )
+albedo_texture = SubResource( 6 )
+metallic = 0.12
+roughness = 0.35
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 1 )
+
+[sub_resource type="GDScript" id=9]
+script/source = "extends Spatial
+
+func _process(delta):
+	rotate(Vector3.UP, delta * 0.2)
+"
+
+[sub_resource type="OpenSimplexNoise" id=10]
+period = 47.8
+
+[sub_resource type="NoiseTexture" id=11]
+seamless = true
+noise = SubResource( 10 )
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.85098, 0.85098, 0.85098, 1 )
+albedo_texture = SubResource( 11 )
+
+[node name="Cubes" type="Spatial"]
+
+[node name="Outer" type="Spatial" parent="."]
+
+[node name="Rotating" type="Spatial" parent="Outer"]
+script = SubResource( 4 )
+
+[node name="CSGTorus" type="CSGTorus" parent="Outer/Rotating"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.506094, 0 )
+layers = 4
+inner_radius = 10.2293
+outer_radius = 11.5901
+
+[node name="CSGTorus2" type="CSGTorus" parent="Outer/Rotating"]
+transform = Transform( -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0.506094, 0 )
+layers = 4
+inner_radius = 10.2293
+outer_radius = 11.5901
+
+[node name="CSGTorus3" type="CSGTorus" parent="Outer/Rotating"]
+transform = Transform( 1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0.506094, 0 )
+layers = 4
+inner_radius = 10.2293
+outer_radius = 11.5901
+
+[node name="Stationary" type="Spatial" parent="Outer"]
+
+[node name="CSGBox" type="CSGBox" parent="Outer/Stationary"]
+layers = 4
+invert_faces = true
+width = 28.421
+height = 28.767
+depth = 24.0484
+material = SubResource( 7 )
+
+[node name="CSGBox2" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8596, 1.63197, -4.76837e-07 )
+layers = 4
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox3" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87697, 1.06491, 0 )
+layers = 4
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox4" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0589252, -0.485946, -2.88627 )
+layers = 4
+width = 11.9241
+height = 0.686702
+depth = 0.5
+
+[node name="CSGBox5" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0566099, 1.64129, 5.4145 )
+layers = 4
+width = 1.20525
+height = 1.86874
+depth = 0.440179
+
+[node name="CSGBox9" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, -2.91306, 0.751413, 1.12611 )
+layers = 4
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox8" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, 2.89065, 0.184353, -1.10733 )
+layers = 4
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox7" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, -2.98941, 0.760733, -5.42465 )
+layers = 4
+width = 0.5
+height = 1.22767
+depth = 0.5
+
+[node name="CSGBox6" type="CSGBox" parent="Outer/Stationary"]
+transform = Transform( 0.921097, 0, 0.389333, 0, 1, 0, -0.389333, 0, 0.921097, 3.19228, 0.760733, 2.50933 )
+layers = 4
+width = 0.852217
+height = 1.72572
+depth = 0.5
+
+[node name="OmniLight2" type="OmniLight" parent="Outer/Stationary"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0782006, 3.10234, 0 )
+layers = 4
+light_color = Color( 0.823529, 0.603922, 0.603922, 1 )
+light_energy = 2.62
+omni_range = 238.5
+
+[node name="ViewBox2" type="CSGBox" parent="."]
+transform = Transform( 0.639046, 0.723276, -0.26171, -0.691292, 0.689261, 0.216873, 0.337246, 0.0423262, 0.940465, 0, 1.00096, 0 )
+layers = 8
+width = 1.0
+height = 1.0
+depth = 1.0
+material = SubResource( 8 )
+
+[node name="Inner" type="Spatial" parent="."]
+
+[node name="CameraRotate" type="Spatial" parent="Inner"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.732679, 0 )
+visible = false
+script = SubResource( 9 )
+
+[node name="InnerScene" type="Spatial" parent="Inner"]
+
+[node name="Floor" type="CSGBox" parent="Inner/InnerScene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76317, 0 )
+layers = 2
+invert_faces = true
+width = 5.0
+height = 3.60211
+depth = 10.2469
+material = SubResource( 12 )
+
+[node name="CSGBox2" type="CSGBox" parent="Inner/InnerScene"]
+transform = Transform( -0.425498, 0.89493, -0.134357, -0.741751, -0.429946, -0.514734, -0.518417, -0.119358, 0.846757, -1.14619, 2.05757, -0.365562 )
+layers = 2
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox3" type="CSGBox" parent="Inner/InnerScene"]
+transform = Transform( 0.431565, 0.887925, -0.159192, -0.711403, 0.226492, -0.665287, -0.554669, 0.400364, 0.729418, 1.28562, 0.427267, 0 )
+layers = 2
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="CSGBox4" type="CSGBox" parent="Inner/InnerScene"]
+transform = Transform( 0.611914, 0, 0.790925, 0.425441, 0.843007, -0.32915, -0.666755, 0.537903, 0.515847, -0.065702, 0.259393, 0.981593 )
+layers = 2
+width = 0.5
+height = 0.5
+depth = 0.5
+
+[node name="OmniLight" type="OmniLight" parent="Inner/InnerScene"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0782006, 1.17736, 0 )
+layers = 2
+light_color = Color( 0.639216, 0.690196, 1, 1 )
+light_energy = 1.65
+omni_range = 29.2

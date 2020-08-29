@@ -2,7 +2,7 @@ shader_type spatial;
 render_mode blend_mix, unshaded;
 render_mode depth_draw_always;
 
-const float grid = 50f;
+const float grid = 75f;
 const float gi = 1f / grid;
 
 void fragment()
