@@ -55,7 +55,8 @@ transform = Transform( 0.212849, -0.526986, 0.822789, 0.131983, 0.849874, 0.5101
 cull_mask = 2148532219
 environment = SubResource( 6 )
 depth = 3
-fov = 69.0
+fov = 120.504
+far = 4.9
 
 [node name="Spatial2" type="Spatial" parent="."]
 transform = Transform( 0.992728, 0, -0.120379, 0, 1, 0, 0.120379, 0, 0.992728, 0, 0, 2.783 )
